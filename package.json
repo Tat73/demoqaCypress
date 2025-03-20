@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "test": "node_modules\\.bin\\cypress run",
+    "runtests": "npm run test --"
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "cypress": "^14.2.0",
+    "cypress-mochawesome-reporter": "^3.8.2"
+  },
+  "dependencies": {
+    "cypress-plugin-api": "^2.11.2",
+    "webpack-preprocessor": "^0.1.12"
+  }
+}

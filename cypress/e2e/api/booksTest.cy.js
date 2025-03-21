@@ -23,4 +23,18 @@ describe("Api book store", () => {
                 })
         })
     })
+
+    it("Get a book by ISBN", () => {
+        cy.get('@bookIsbn').then(bookIsbn => {
+            cy.getBookByIsbn(bookIsbn).then(isbn => {
+                expect(isbn).to.equal(bookIsbn);
+            })
+
+        })
+
+    })
+
+    after("Delete all books by user ID", () => {
+        cy.deleteBookByIsbn(`${Cypress.env('userID')}`);
+    })
 })

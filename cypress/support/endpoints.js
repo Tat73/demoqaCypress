@@ -24,3 +24,21 @@ Cypress.Commands.add('addBooks', (userId, isbn) => {
             return response.body.books[0].isbn;
         })
 })
+
+Cypress.Commands.add('getBookByIsbn', (isbn) => {
+    cy.sendRequest('GET', API_ENDPOINTS.GET_BOOK_BY_ISBN, null, `ISBN=${(isbn)}`)
+        .then(response => {
+            expect(response.status).to.equal(200)
+            expect(response.body).to.have.property('isbn')
+            return response.body.isbn
+
+        })
+})
+
+Cypress.Commands.add('deleteBookByIsbn', (userID) => {
+    cy.sendRequest('DELETE', API_ENDPOINTS.DELETE_BOOK_BY_USERID, null, `UserId=${(userID)}`)
+        .then(response => {
+            expect(response.status).to.equal(204)
+
+        })
+})
